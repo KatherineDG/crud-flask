@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/clientes.css">
+    <title>Clientes</title>
+</head>
+<body>
+    <h1>Clientes</h2>
+    <div class="contenedor-tabla-clientes">
+        <table>
+            <tr class="fila-encabezado">
+                <th><p>DNI</p></th>
+                <th><p>Nombre</p></th>
+                <th><p>Apellido</p></th>
+                <th><p>Acciones</p></th>
+            </tr>
+            <!--Tengo que hacer un recorrido por la cantidad de clientes-->
+            {% for cliente in clientes %}
+                <tr class="fila-registro-cliente" >
+                    <td class="fila-borde-izq">{{cliente[0]}}</td>
+                    <td>{{cliente[1]}}</td>
+                    <td>{{cliente[2]}}</td>
+                    <td class="fila-borde-der">
+                        <a href="{{url_for("perfilcliente", dni=cliente[0])}}"> <img src="../static/images/Eye.png" alt="ver"> </a>
+                        <a href="{{url_for("modificarcliente", dni=cliente[0])}}"> <img src="../static/images/Pencil.png" alt="modificar"> </a>
+                        <a href="/eliminar/{{cliente[0]}}"> <img src="../static/images/Trash.png" alt="borrar"> </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td><!--para que haya espacio entre filas-->
+                </tr>
+            {% endfor %}
+            
+            {% block content %}
+            <tr class="fila-agregar-cliente">
+                <td class="fila-borde" colspan="4"><button class="boton-agregar-cliente" onclick="irAgregarCliente()">+</button></td> <!--Para insertar un nuvo ciente-->
+            </tr>
+            <script>
+                function irAgregarCliente(){
+                var url = '{{url_for("agregarcliente")}}'
+                window.location.href = url
+            };
+            </script>
+            {% endblock %}
+            <tr>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    
+</body>
+</html>

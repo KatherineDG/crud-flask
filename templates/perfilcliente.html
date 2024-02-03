@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/perfilcliente.css">
+    <title>Perfil Cliente</title>
+</head>
+<body>
+    <div class="contenedor-encabezado">
+        {% block content %}
+            <button class="boton-volver" onclick="volver()"><</button>
+            <script>
+                function volver(){
+                    var url = "{{url_for('clientes')}}"
+                    window.location.href = url
+                }
+            </script>
+        {% endblock %}
+        <h1>Perfil Cliente</h1>
+    </div>
+
+    <section class="perfil">
+        <div class="contenedor-perfil-cliente">
+            <div class="contenedor-foto">
+                {% if cliente[0][5] %}
+                    <img class="foto-perfil-cliente" src="/uploads/{{cliente[0][5]}}" alt="perfil">
+                {% else %}
+                    <img class="foto-perfil-cliente" src="../static/images/aaa.jpg" alt="perfil">
+                {% endif %}
+            </div>
+            <div class="contenedor-datos">
+                <p>{{cliente[0][0]}}</p>
+                <p>{{cliente[0][1]}}</p>
+                <p>{{cliente[0][2]}}</p>
+                <p>{{cliente[0][3]}}</p>
+            </div>
+            <div class="contenedor-calendario">
+                <iframe src="https://calendar.google.com/calendar/embed?src=30db1170aca3e74791a96cb698a641432dbb0126a79fa4f402ca316d568a91bd%40group.calendar.google.com&ctz=America%2FArgentina%2FBuenos_Aires" style="border: 0" width="300" height="200" frameborder="0" scrolling="no"></iframe>
+            </div>
+            <div class="contenedor-items">
+                <p>{{cliente[0][4]}}</p>
+                <div class="editores-datos">
+                    <a href="{{url_for("modificarcliente", dni=cliente[0][0])}}"> <img src="../static/images/Pencil.png" alt="modificar"> </a>
+                    <a href="/eliminar/{{cliente[0][0]}}"> <img src="../static/images/Trash.png" alt="borrar"> </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+</body>
+</html>

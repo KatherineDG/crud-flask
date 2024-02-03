@@ -1,0 +1,85 @@
+body{
+    margin: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #6c5d97ab;
+}
+
+h1{
+    background-color: #6C5D97;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 1% 0 1% 0;
+    margin: 0;
+}
+
+.contenedor-tabla-clientes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+table{
+    border-collapse: collapse; /*para que no tenga bordes entre columnas*/
+    width: 70%;
+    height: 250px;
+    margin: 5% 0 5% 0;
+}
+
+
+.fila-encabezado th p{
+    font-size: 1.5em;
+    background-color: #FFFFFF;
+    border-radius: 40px;
+    padding: 20px 10px 20px 10px;
+    margin: 0 3px 0 3px;
+}
+
+
+.fila-registro-cliente{
+    background-color: #FFFFFF;
+    text-align: center;
+}
+.fila-registro-cliente td{
+    font-size: larger;
+}
+
+.fila-agregar-cliente{
+    text-align: center;
+    background-color: #FFFFFF;
+    opacity: 70%;
+    height: 20px;
+}
+
+.fila-borde-izq{
+    border-radius: 30px 0 0 30px;
+}
+
+.fila-borde-der{
+    border-radius: 0 30px 30px 0;
+}
+.fila-borde-der a{
+    text-decoration: none;
+}
+.fila-borde-der a img{
+    height: 30px;
+    margin-right: 10px;
+}
+
+.fila-borde{
+    border-radius: 30px 30px 30px 30px;
+}
+
+.boton-agregar-cliente{
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px 30px 30px 30px;
+    border: none;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+.boton-agregar-cliente:hover{
+    transition: 400ms;
+    background-color: #6c5d97ab;
+}
