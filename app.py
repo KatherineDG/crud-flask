@@ -5,6 +5,7 @@ import sqlite3
 import os
 
 app = Flask(__name__)
+app.config['DEBUG'] = False
 
 
 
