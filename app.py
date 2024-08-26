@@ -60,8 +60,12 @@ def agregar():
     apellido = request.form['apellido']
     mail = request.form['mail']
     foto = request.files['foto']
-    foto.save("uploads/" +  foto.filename)
-    nombre_foto = foto.filename
+    if foto and foto.filename != '':
+        foto_path = os.path.join(app.config['CARPETA'], foto.filename)
+        foto.save(foto_path)
+        nombre_foto = foto.filename
+    else:
+        nombre_foto = ''
     accion_modificar_db('SYSTEMDATABASECRUD.db', 'INSERT INTO cliente (dni, nombre, apellido, mail, foto) VALUES (?, ?, ?, ?, ?)', (dni, nombre, apellido, mail, nombre_foto))
     
     return redirect(url_for('clientes'))
